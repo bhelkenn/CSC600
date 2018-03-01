@@ -3,18 +3,22 @@ using namespace std;
 
 const int DISPLAY_SIZE = 7;
 void BigInt(int);
-void addEmptyColumn(char*, int, int);
-void copyBlock(char*, int, int, int);
-void printBlock(char*, int);
+void AddEmptyColumn(char*, int, int);
+void CopyBlock(char*, int, int, int);
+void PrintBlock(char*, int);
 
 int main() {
 	int value = 0;
-	do {
-		cout << "Enter an integer value to display it in 7x7 (-1 to quit): ";
-		cin >> value;
-		if (value < 0) break;
-		BigInt(value);
-	} while (true);
+	BigInt(1);
+	BigInt(12);
+	BigInt(123);
+	BigInt(1234);
+	BigInt(12345);
+	BigInt(123456);
+	BigInt(1234567);
+	BigInt(12345678);
+	BigInt(123456789);
+	BigInt(1234567890);
 
 	return 0;
 }
@@ -41,14 +45,14 @@ void BigInt(int n) {
 
 	for (int i = 0; i < number_of_digits; i++) {
 		int starting_col = i + DISPLAY_SIZE * i;
-		copyBlock(display_block, digits[i], starting_col, columns);
-		addEmptyColumn(display_block, starting_col + DISPLAY_SIZE, columns);
+		CopyBlock(display_block, digits[i], starting_col, columns);
+		AddEmptyColumn(display_block, starting_col + DISPLAY_SIZE, columns);
 	}
 
-	printBlock(display_block, columns);
+	PrintBlock(display_block, columns);
 }
 
-void copyBlock(char *display_block, int digit, int starting_col, int target_col_count) {
+void CopyBlock(char *display_block, int digit, int starting_col, int target_col_count) {
 	char e = ' ';
 	char f = '@';
 	char* big_digits[10];
@@ -147,13 +151,13 @@ void copyBlock(char *display_block, int digit, int starting_col, int target_col_
 	}
 }
 
-void addEmptyColumn(char *display_block, int starting_col, int columns) {
+void AddEmptyColumn(char *display_block, int starting_col, int columns) {
 	for (int i = 0; i < DISPLAY_SIZE; i++) {
 		display_block[starting_col + i * columns] = ' ';
 	}
 }
 
-void printBlock(char *block, int columns) {
+void PrintBlock(char *block, int columns) {
 	for (int i = 0; i < DISPLAY_SIZE; i++) {
 		for (int j = 0; j < columns; j++) {
 			cout << block[j + columns * i];
