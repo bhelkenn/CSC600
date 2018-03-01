@@ -1,5 +1,5 @@
 [x] - Plateau
 [x] - Integer Plot
-[ ] - Array Processing
+[x] - Array Processing
 [ ] - Iteration vs. Recursion, v1
 [ ] - Iteration vs. Recursion, v2
