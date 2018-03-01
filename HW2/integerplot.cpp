@@ -3,11 +3,19 @@ using namespace std;
 
 const int DISPLAY_SIZE = 7;
 void BigInt(int);
-void copyBlock(char*, int, int);
-void addEmptyColumn(char*, int);
+void addEmptyColumn(char*, int, int);
+void copyBlock(char*, int, int, int);
+void printBlock(char*, int);
 
 int main() {
-	BigInt(3);
+	int value = 0;
+	do {
+		cout << "Enter an integer value to display it in 7x7 (-1 to quit): ";
+		cin >> value;
+		if (value < 0) break;
+		BigInt(value);
+	} while (true);
+
 	return 0;
 }
 
@@ -20,35 +28,33 @@ void BigInt(int n) {
 		number_of_digits++;
 		tmp /= 10;
 	}
-	cout << "number_of_digits: " << number_of_digits << endl;
 
 	for (int i = number_of_digits - 1; i >= 0; i--) {
 		digits[i] = n % 10;
 		n /= 10;
 	}
-	for (int i = 0; i < number_of_digits; i++) {
-		cout << "digits[" << i << "]: " << digits[i] << endl;
-	}
+
 	int rows = DISPLAY_SIZE;
-	int columns = (DISPLAY_SIZE + 1) * number_of_digits;
-	char display_block[rows * columns];
+	int columns = (1 + DISPLAY_SIZE) * number_of_digits;
+
+	char *display_block = new char[rows * columns];
 
 	for (int i = 0; i < number_of_digits; i++) {
-		copyBlock(display_block, digits[i], i);
-		addEmptyColumn(display_block, (i + 1) * DISPLAY_SIZE + 1);
+		int starting_col = i + DISPLAY_SIZE * i;
+		copyBlock(display_block, digits[i], starting_col, columns);
+		addEmptyColumn(display_block, starting_col + DISPLAY_SIZE, columns);
 	}
 
-	for (int i = 0; i < rows; i++) {
-		for (int j = 0; j < columns; j++) {
-			cout << display_block[j + i * columns];
-		}
-		cout << endl;
-	}
+	printBlock(display_block, columns);
 }
 
-void copyBlock(char *display_block, int digit, int placement) {
+void copyBlock(char *display_block, int digit, int starting_col, int target_col_count) {
 	char e = ' ';
 	char f = '@';
+	char* big_digits[10];
+	for (int i = 0; i < 10; i++) {
+		big_digits[i] = new char[DISPLAY_SIZE * DISPLAY_SIZE];
+	}
 	char block1[DISPLAY_SIZE * DISPLAY_SIZE] = {e, e, e, f, f, e, e,
 																							e, e, f, f, f, e, e,
 																							e, e, e, f, f, e, e,
@@ -119,85 +125,39 @@ void copyBlock(char *display_block, int digit, int placement) {
 																							f, f, e, e, e, f, f,
 																							f, f, e, e, e, f, f,
 																							e, f, f, f, f, f, e};
+	big_digits[0] = block0;
+	big_digits[1] = block1;
+	big_digits[2] = block2;
+	big_digits[3] = block3;
+	big_digits[4] = block4;
+	big_digits[5] = block5;
+	big_digits[6] = block6;
+	big_digits[7] = block7;
+	big_digits[8] = block8;
+	big_digits[9] = block9;
 
-	switch (digit) {
-	case 1:
-		for (int i = 0; i < DISPLAY_SIZE; i++) {
-			for (int j = 0; j < DISPLAY_SIZE; j++) {
-				display_block[(i + placement) * DISPLAY_SIZE + j] = block1[j + i * DISPLAY_SIZE];
-			}
+	for (int i = 0; i < DISPLAY_SIZE; i++) {
+		for (int j = 0; j < DISPLAY_SIZE; j++) {
+			int target_row, target_col;
+			target_row = i;
+			target_col = j + starting_col;
+
+			display_block[target_col + target_col_count * target_row] = big_digits[digit][j + DISPLAY_SIZE * i];
 		}
-		break;
-	case 2:
-		for (int i = 0; i < DISPLAY_SIZE; i++) {
-			for (int j = 0; j < DISPLAY_SIZE; j++) {
-				display_block[(i + placement) * DISPLAY_SIZE + j] = block2[j + i * DISPLAY_SIZE];
-			}
-		}
-		break;
-	case 3:
-		for (int i = 0; i < DISPLAY_SIZE; i++) {
-			for (int j = 0; j < DISPLAY_SIZE; j++) {
-				display_block[(i + placement) * DISPLAY_SIZE + j] = block3[j + i * DISPLAY_SIZE];
-			}
-		}
-		break;
-	case 4:
-		for (int i = 0; i < DISPLAY_SIZE; i++) {
-			for (int j = 0; j < DISPLAY_SIZE; j++) {
-				display_block[(i + placement) * DISPLAY_SIZE + j] = block4[j + i * DISPLAY_SIZE];
-			}
-		}
-		break;
-	case 5:
-		for (int i = 0; i < DISPLAY_SIZE; i++) {
-			for (int j = 0; j < DISPLAY_SIZE; j++) {
-				display_block[(i + placement) * DISPLAY_SIZE + j] = block5[j + i * DISPLAY_SIZE];
-			}
-		}
-		break;
-	case 6:
-		for (int i = 0; i < DISPLAY_SIZE; i++) {
-			for (int j = 0; j < DISPLAY_SIZE; j++) {
-				display_block[(i + placement) * DISPLAY_SIZE + j] = block6[j + i * DISPLAY_SIZE];
-			}
-		}
-		break;
-	case 7:
-		for (int i = 0; i < DISPLAY_SIZE; i++) {
-			for (int j = 0; j < DISPLAY_SIZE; j++) {
-				display_block[(i + placement) * DISPLAY_SIZE + j] = block7[j + i * DISPLAY_SIZE];
-			}
-		}
-		break;
-	case 8:
-		for (int i = 0; i < DISPLAY_SIZE; i++) {
-			for (int j = 0; j < DISPLAY_SIZE; j++) {
-				display_block[(i + placement) * DISPLAY_SIZE + j] = block8[j + i * DISPLAY_SIZE];
-			}
-		}
-		break;
-	case 9:
-		for (int i = 0; i < DISPLAY_SIZE; i++) {
-			for (int j = 0; j < DISPLAY_SIZE; j++) {
-				display_block[(i + placement) * DISPLAY_SIZE + j] = block9[j + i * DISPLAY_SIZE];
-			}
-		}
-		break;
-	case 0:
-		for (int i = 0; i < DISPLAY_SIZE; i++) {
-			for (int j = 0; j < DISPLAY_SIZE; j++) {
-				display_block[(i + placement) * DISPLAY_SIZE + j] = block0[j + i * DISPLAY_SIZE];
-			}
-		}
-		break;
-	default:
-		break;
- 	}
+	}
 }
 
-void addEmptyColumn(char *display_block, int column) {
+void addEmptyColumn(char *display_block, int starting_col, int columns) {
 	for (int i = 0; i < DISPLAY_SIZE; i++) {
-		display_block[column + i * DISPLAY_SIZE] = ' ';
+		display_block[starting_col + i * columns] = ' ';
+	}
+}
+
+void printBlock(char *block, int columns) {
+	for (int i = 0; i < DISPLAY_SIZE; i++) {
+		for (int j = 0; j < columns; j++) {
+			cout << block[j + columns * i];
+		}
+		cout << endl;
 	}
 }
