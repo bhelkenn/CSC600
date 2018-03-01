@@ -1,20 +1,25 @@
 #include <iostream>
 
 using namespace std;
-void reduce(int*, int&);
+int* reduce(int*, int&);
 void PrintArray(int*, int);
 
 int main() {
   int size = 16;
   int array[] = {9,1,1,6,7,1,2,3,3,5,6,6,6,6,7,9};
-  PrintArray(array, size);
-  reduce(array, size);
-  PrintArray(array, size);
+  int *a = new int[size];
+  for (int i = 0; i < size; i++) {
+    a[i] = array[i];
+  }
+
+  PrintArray(a, size);
+  a = reduce(a, size);
+  PrintArray(a, size);
 
   return 0;
 }
 
-void reduce(int *array, int &size) {
+int* reduce(int *array, int &size) {
   int max, mid, min;
   max = mid = min = 0;
 
@@ -46,9 +51,7 @@ void reduce(int *array, int &size) {
     }
   }
 
-  for (int i = 0; i < size; i++) {
-    array[i] = reducedArray[i];
-  }
+  return reducedArray;
 }
 
 void PrintArray(int *array, int size) {
