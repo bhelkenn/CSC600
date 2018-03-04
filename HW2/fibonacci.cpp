@@ -13,10 +13,9 @@ int main() {
   while (timer < 10.0) {
     Frec(N10);
     timer = sec() - timer;
-    cout << "N10: " << N10 << "\ttimer: " << timer << endl;
-    N10++;
+    if (timer < 10.0) N10++;
   }
-  N10--; // revert to last time1 under 10 sec
+  
   cout << "N10: " << N10 << endl;
   clock_t start_timer = clock()/CLOCKS_PER_SEC;
   Frec((unsigned long int)N10);
