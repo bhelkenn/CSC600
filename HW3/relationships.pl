@@ -5,7 +5,9 @@ family([charles, nadine, [brady, john, will]]).
 family([frank, rose, [charles, patricia]]).
 family([william, wife1, [frank]]).
 family([helkenn, wife2, [william]]).
-family([husband, beers, [nadine, richard]]).
+family([husband1, beers, [nadine, richard]]).
+family([husband2, beers, [kenneth]]).
+family([rando_dude, patricia, [sydrah]]).
 
 /* rules */
 member_of(X, [X|_]).
@@ -13,14 +15,16 @@ member_of(X, [_|T]) :- member_of(X, T).
 
 male(X) :- m(L), member_of(X, L).
 female(X) :- f(L), member_of(X, L).
-father(P, C) :- family(P, _ | T), male(P), member_of(C, T).
-mother(P, C) :- family(_, P | T), female(P), member_of(C, T).
-parent(P, C) :- father(P, C); mother(P, C).
+father(F, C) :- family([F, _ | [T]]), male(F), member_of(C, T).
+mother(M, C) :- family([_, M | [T]]), female(M), member_of(C, T).
+parent(P, C) :- father(P, C).
+parent(P, C) :- mother(P, C).
 
-siblings1(X, Y, P) :- parent(P, X), parent(P, Y), family(_, _ | C1),
-                      family(_, _ | C2), C1 \= C2, member_of(X, C1),
-                      member_of(Y, C2), X \= Y.
-siblings2(X, Y) :- family(_, _ | C), member_of(X, C), member_of(Y, C), X \= Y.
+siblings1(X, Y, P) :- family([_, _ | [C1]]), family([_, _ | [C2]]), C1 \= C2,
+                      member_of(X, C1), member_of(Y, C2), X \= Y,
+                      parent(P, X), parent(P, Y).
+siblings2(X, Y) :- family([_, _ | [C]]), member_of(X, C), member_of(Y, C),
+                   X \= Y.
 
 brother1(X, Y) :- siblings1(X, Y, _), male(X).
 sister1(X, Y) :- siblings1(X, Y, _), female(X).
