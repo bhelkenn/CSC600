@@ -10,3 +10,12 @@ two_adjacent(X, Y, [X, Y|_]).
 two_adjacent(X, Y, [_|T]) :- two_adjacent(X, Y, T).
 three_adjacent(X, Y, Z, [X, Y, Z|_]).
 three_adjacent(X, Y, Z, [_|T]) :- three_adjacent(X, Y, Z, T).
+append_list([], L, L).
+append_list([X|TL], L, [X|TR]) :- append_list(TL, L, TR).
+delete1(X, [X|T], T).
+delete1(X, [H|T], [H|Tail]) :- delete1(X, T, Tail).
+append_element(L, [X], LX) :- append_list(L, [X], LX).
+insert(X, L, LX) :- delete1(X, LX, L).
+length_of_list([X], 1).
+length_of_list([_|T], Length) :- length_of_list(T, Rest), Length is 1 + Rest.
+reverse_list([], []).
