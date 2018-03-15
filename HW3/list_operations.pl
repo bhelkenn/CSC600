@@ -20,3 +20,6 @@ length_of_list([X], 1).
 length_of_list([_|T], Length) :- length_of_list(T, Rest), Length is 1 + Rest.
 reverse_list([], []).
 reverse_list([H|T], LR) :- reverse_list(T, TR), append_element(TR, [H], LR).
+palindrome(L, LR) :- reverse_list(L, LR), L = LR.
+display_list([]) :- nl.
+display_list([H|T]) :- write(H), tab(1), display_list(T).
