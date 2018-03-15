@@ -1,6 +1,6 @@
 /* lists */
-m([brady, john, will, charles, richard, frank, husband, william, helkenn]).
-f([nadine, patricia, rose, beers, wife1, wife2]).
+m([brady, john, will, charles, richard, kenneth, frank, husband1, husband2, rando_dude, william, helkenn]).
+f([nadine, patricia, rose, beers, wife1, wife2, sydrah]).
 family([charles, nadine, [brady, john, will]]).
 family([frank, rose, [charles, patricia]]).
 family([william, wife1, [frank]]).
@@ -19,13 +19,9 @@ father(F, C) :- family([F, _ | [T]]), male(F), member_of(C, T).
 mother(M, C) :- family([_, M | [T]]), female(M), member_of(C, T).
 parent(P, C) :- father(P, C).
 parent(P, C) :- mother(P, C).
-
-siblings1(X, Y, P) :- family([_, _ | [C1]]), family([_, _ | [C2]]), C1 \= C2,
-                      member_of(X, C1), member_of(Y, C2), X \= Y,
-                      parent(P, X), parent(P, Y).
-siblings2(X, Y) :- family([_, _ | [C]]), member_of(X, C), member_of(Y, C),
-                   X \= Y.
-
+siblings1(X, Y, P) :- family([_, _ | [C1]]), family([_, _ | [C2]]), C1 \= C2, member_of(X, C1),
+                      member_of(Y, C2), X \= Y, parent(P, X), parent(P, Y).
+siblings2(X, Y) :- family([_, _ | [C]]), member_of(X, C), member_of(Y, C), X \= Y.
 brother1(X, Y) :- siblings1(X, Y, _), male(X).
 sister1(X, Y) :- siblings1(X, Y, _), female(X).
 brother2(X, Y) :- siblings2(X, Y), male(X).

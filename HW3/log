@@ -1,0 +1,187 @@
+Male = brady Male = john Male = will Male = charles Male = richard Male = kenneth Male = frank Male = husband1 Male = husband2 Male = rando_dude Male = william Male = helkenn false.
+
+Female = nadine Female = patricia Female = rose Female = beers Female = wife1 Female = wife2 Female = sydrah false.
+
+Father = charles,
+Child = brady Father = charles,
+Child = john Father = charles,
+Child = will Father = frank,
+Child = charles Father = frank,
+Child = patricia Father = william,
+Child = frank Father = helkenn,
+Child = william Father = husband1,
+Child = nadine Father = husband1,
+Child = richard Father = husband2,
+Child = kenneth Father = rando_dude,
+Child = sydrah false.
+
+Mother = nadine,
+Child = brady Mother = nadine,
+Child = john Mother = nadine,
+Child = will Mother = rose,
+Child = charles Mother = rose,
+Child = patricia Mother = wife1,
+Child = frank Mother = wife2,
+Child = william Mother = beers,
+Child = nadine Mother = beers,
+Child = richard Mother = beers,
+Child = kenneth Mother = patricia,
+Child = sydrah false.
+
+Parent = charles,
+Child = brady Parent = charles,
+Child = john Parent = charles,
+Child = will Parent = frank,
+Child = charles Parent = frank,
+Child = patricia Parent = william,
+Child = frank Parent = helkenn,
+Child = william Parent = husband1,
+Child = nadine Parent = husband1,
+Child = richard Parent = husband2,
+Child = kenneth Parent = rando_dude,
+Child = sydrah Parent = nadine,
+Child = brady Parent = nadine,
+Child = john Parent = nadine,
+Child = will Parent = rose,
+Child = charles Parent = rose,
+Child = patricia Parent = wife1,
+Child = frank Parent = wife2,
+Child = william Parent = beers,
+Child = nadine Parent = beers,
+Child = richard Parent = beers,
+Child = kenneth Parent = patricia,
+Child = sydrah false.
+
+Sibling1 = nadine,
+Sibling2 = kenneth,
+Parent = beers Sibling1 = richard,
+Sibling2 = kenneth,
+Parent = beers Sibling1 = kenneth,
+Sibling2 = nadine,
+Parent = beers Sibling1 = kenneth,
+Sibling2 = richard,
+Parent = beers false.
+
+Sibling1 = brady,
+Sibling2 = john Sibling1 = brady,
+Sibling2 = will Sibling1 = john,
+Sibling2 = brady Sibling1 = john,
+Sibling2 = will Sibling1 = will,
+Sibling2 = brady Sibling1 = will,
+Sibling2 = john Sibling1 = charles,
+Sibling2 = patricia Sibling1 = patricia,
+Sibling2 = charles Sibling1 = nadine,
+Sibling2 = richard Sibling1 = richard,
+Sibling2 = nadine false.
+
+Brother = richard,
+Of = kenneth Brother = kenneth,
+Of = nadine Brother = kenneth,
+Of = richard false.
+
+Sister = nadine,
+Of = kenneth false.
+
+Brother = brady,
+Of = john Brother = brady,
+Of = will Brother = john,
+Of = brady Brother = john,
+Of = will Brother = will,
+Of = brady Brother = will,
+Of = john Brother = charles,
+Of = patricia Brother = richard,
+Of = nadine false.
+
+Sister = patricia,
+Of = charles Sister = nadine,
+Of = richard false.
+
+Cousin1 = brady,
+Cousin2 = sydrah Cousin1 = john,
+Cousin2 = sydrah Cousin1 = will,
+Cousin2 = sydrah Cousin1 = sydrah,
+Cousin2 = brady Cousin1 = sydrah,
+Cousin2 = john Cousin1 = sydrah,
+Cousin2 = will false.
+
+Uncle = charles,
+Of = sydrah Uncle = richard,
+Of = brady Uncle = richard,
+Of = john Uncle = richard,
+Of = will false.
+
+Aunt = patricia,
+Of = brady Aunt = patricia,
+Of = john Aunt = patricia,
+Of = will false.
+
+Grandchild = brady,
+Of = frank Grandchild = john,
+Of = frank Grandchild = will,
+Of = frank Grandchild = sydrah,
+Of = frank Grandchild = charles,
+Of = william Grandchild = patricia,
+Of = william Grandchild = frank,
+Of = helkenn Grandchild = brady,
+Of = husband1 Grandchild = john,
+Of = husband1 Grandchild = will,
+Of = husband1 Grandchild = brady,
+Of = rose Grandchild = john,
+Of = rose Grandchild = will,
+Of = rose Grandchild = sydrah,
+Of = rose Grandchild = charles,
+Of = wife1 Grandchild = patricia,
+Of = wife1 Grandchild = frank,
+Of = wife2 Grandchild = brady,
+Of = beers Grandchild = john,
+Of = beers Grandchild = will,
+Of = beers false.
+
+Grandson = brady,
+Of = frank Grandson = john,
+Of = frank Grandson = will,
+Of = frank Grandson = charles,
+Of = william Grandson = frank,
+Of = helkenn Grandson = brady,
+Of = husband1 Grandson = john,
+Of = husband1 Grandson = will,
+Of = husband1 Grandson = brady,
+Of = rose Grandson = john,
+Of = rose Grandson = will,
+Of = rose Grandson = charles,
+Of = wife1 Grandson = frank,
+Of = wife2 Grandson = brady,
+Of = beers Grandson = john,
+Of = beers Grandson = will,
+Of = beers false.
+
+Granddaughter = sydrah,
+Of = frank Granddaughter = patricia,
+Of = william Granddaughter = sydrah,
+Of = rose Granddaughter = patricia,
+Of = wife1 false.
+
+GGP = william,
+Of = brady GGP = william,
+Of = john GGP = william,
+Of = will GGP = william,
+Of = sydrah GGP = helkenn,
+Of = charles GGP = helkenn,
+Of = patricia GGP = wife1,
+Of = brady GGP = wife1,
+Of = john GGP = wife1,
+Of = will GGP = wife1,
+Of = sydrah GGP = wife2,
+Of = charles GGP = wife2,
+Of = patricia false.
+
+Ancestor = helkenn,
+Descendent = brady Ancestor = helkenn,
+Descendent = john Ancestor = helkenn,
+Descendent = will Ancestor = helkenn,
+Descendent = sydrah Ancestor = wife2,
+Descendent = brady Ancestor = wife2,
+Descendent = john Ancestor = wife2,
+Descendent = will Ancestor = wife2,
+Descendent = sydrah false.
+
