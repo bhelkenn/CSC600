@@ -19,3 +19,4 @@ insert(X, L, LX) :- delete1(X, LX, L).
 length_of_list([X], 1).
 length_of_list([_|T], Length) :- length_of_list(T, Rest), Length is 1 + Rest.
 reverse_list([], []).
+reverse_list([H|T], LR) :- reverse_list(T, TR), append_element(TR, [H], LR).
