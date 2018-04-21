@@ -1,0 +1,16 @@
+#lang racket
+
+;#1
+;a) constant example
+123
+
+;b) variable definition
+(define x 123)
+x
+
+;c) data structures
+(define lst (list ('(* 2 3) '(+ 3 3))))
+lst
+
+;d) equality
+(equal? car(lst) cdr(lst))
