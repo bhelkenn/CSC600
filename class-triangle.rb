@@ -1,2 +1,0 @@
-#Triangle class and tests
-
