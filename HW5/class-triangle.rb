@@ -30,15 +30,12 @@ class Triangle
   end
 
   def area
-    p = (@a + @b + @c) / 2.
-    a = p - @a
-    b = p - @b
-    c = p - @c
-    sqrt(p * a * b * c)
+    @p = (@a + @b + @c) / 2.0
+    Math.sqrt(@p * (@p - @a) * (@p - @b) * (@p - @c))
   end
 
   def test
-    if @a + @b < @c || @a + @c < @b || @b + @c < @a
+    if @a + @b <= @c || @a + @c <= @b || @b + @c <= @a
       @type = "false" ; return @type
     end
 
@@ -54,19 +51,42 @@ class Triangle
       @scalene = true
     end
 
-    if @type == "right" && @isosceles
-      @type = "right isosceles"
-    elsif @type == "right" && @scalene
-      @type = "right scalene"
+    if @isosceles
+      if @type == "right" then @type += " isosceles"
+      else @type = "isosceles"
+      end
+    elsif @scalene
+      if @type == "right" then @type += " scalene"
+      else @type = "scalene"
+      end
     end
 
     return @type
   end
 end
 
-tri = Triangle.new(1,2,3)
-puts tri.test
-if tri.test != "false"
-  puts "perimeter: #{tri.perimeter}"
-  puts "area: #{tri.area}"
+input = ""
+loop do
+  print "Enter side A: "
+  input = gets.chomp
+  if input != "q" then a = input
+  else break
+  end
+  print "Enter side B: "
+  input = gets.chomp
+  if input != "q" then b = input
+  else break
+  end
+  print "Enter side C: "
+  input = gets.chomp
+  if input != "q" then c = input ; puts
+  else break
+  end
+
+  tri = Triangle.new(a.to_f,b.to_f,c.to_f)
+  puts "Triangle Type: #{tri.test}"
+  if tri.test != "false"
+    puts "Perimeter: #{tri.perimeter}"
+    puts "Area: #{tri.area}" ; puts
+  end
 end
