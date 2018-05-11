@@ -4,8 +4,7 @@ class Array
   def limited? (amin, amax)
     self.each do |i|
       return false if i < amin || i > amax
-    end
-    return true
+    end ; return true
   end
 
   def sorted?
@@ -22,7 +21,6 @@ c = b.reverse
 print "a = " ; p a
 print "b = " ; p b
 print "c = " ; p c
-
 puts "a.limited?(0,6) #{a.limited?(0,6)}"
 puts "b.limited?(3,6) #{b.limited?(3,6)}"
 puts "a.sorted? #{a.sorted?}"

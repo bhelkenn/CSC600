@@ -5,14 +5,10 @@ class Sphere
     @radius = radius
   end
 
-  # Getters
   def radius ; @radius ; end
-
   def area ; 4 * Math::PI * (@radius ** 2) ; end
   def volume ; 4 / 3.0 * Math::PI * (@radius ** 3) ; end
-
   def show ; puts "Radius: #{self.radius}" ; end
-
   def show_size
     puts "Area: #{self.area}" ; puts "Volume: #{self.volume}"
   end
@@ -23,9 +19,7 @@ class Ball < Sphere
     @radius = radius ; @color = color
   end
 
-  # Getters
   def color ; @color ; end
-
   def show
     puts "Radius: #{self.radius}"
     puts "Color: #{self.color}"
@@ -37,9 +31,7 @@ class MyBall < Ball
     @radius = radius ; @color = color ; @owner = owner
   end
 
-  # Getters
   def owner ; @owner ; end
-
   def show
     puts "Radius: #{self.radius}"
     puts "Color: #{self.color}"

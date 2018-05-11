@@ -1,23 +1,20 @@
 #loop demo program
-n = 0
-loop do
+n = 0 ; a = [1, 1, 2, 3, 2, 3, 4, 5]
+loop do # loop
   puts "basic looping" ; n += 1
   break if n >= 3
 end
 
-n = 0
 print "while: "
-while n < 5 do
-  print "#{n} " ; n += 1
+while n > 0 do
+  print "#{n} " ; n -= 1
 end ; puts
 
-n = 0
 print "until: "
 until n == 10 do
   print "#{n} " ; n += 1
 end ; puts
 
-a = [1, 2, 3, 4, 5]
 print "for: "
 for i in a do
   print "#{i} "
@@ -41,13 +38,11 @@ a.each do |i|
 end ; puts
 
 puts "Mapping squares:"
-p a.map {|i| i ** 2}
-p a
+p a.map {|i| i ** 2} ; print "a = " ; p a
 
 print "stepping by 2: "
 (0..10).step(2) {|i| print "#{i} "} ; puts
 
-a = [1, 1, 2, 3, 2, 3, 4, 5]
 print "collect * 2: " ; p a.collect {|i| i * 2}
 print "select evens: " ; p a.select {|i| i % 2 == 0}
 print "reject evens: " ; p a.reject {|i| i % 2 == 0}
