@@ -1,0 +1,8 @@
+a = [1, 3, 2, 5, 4]
+b = [1, 2, 3, 4, 5]
+c = [5, 4, 3, 2, 1]
+a.limited?(0,6) true
+b.limited?(3,6) false
+a.sorted? 0
+b.sorted? 1
+c.sorted? -1

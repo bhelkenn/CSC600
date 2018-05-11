@@ -1,0 +1,13 @@
+Triangle(1.0,2.0,3.0) created
+Not a valid Triangle
+
+Triangle(2.0,3.0,4.0) created
+Triangle Type: scalene
+Perimeter: 9.0
+Area: 2.9047375096555625
+
+Triangle(3.0,4.0,5.0) created
+Triangle Type: right scalene
+Perimeter: 12.0
+Area: 6.0
+

@@ -2,28 +2,13 @@
 
 class Triangle
   def initialize(a,b,c)
-    @a = a
-    @b = b
-    @c = c
-    @type = ""
+    @a = a ; @b = b ; @c = c
   end
 
   # Getters
-  def a
-    @a
-  end
-
-  def b
-    @b
-  end
-
-  def c
-    @c
-  end
-
-  def type
-    @type
-  end
+  def a ; @a ; end
+  def b ; @b ; end
+  def c ; @c ; end
 
   def perimeter
     @a + @b + @c
@@ -34,59 +19,32 @@ class Triangle
     Math.sqrt(@p * (@p - @a) * (@p - @b) * (@p - @c))
   end
 
+  def right? ; @a ** 2 + @b ** 2 == @c ** 2 ; end
+  def equilateral? ; @a == @b && @a == @c ; end
+  def not_a_triangle?
+    @a + @b <= @c || @a + @c <= @b || @b + @c <= @a
+  end
+  def isosceles? ; @a == @b || @a == @c || @b == @c ; end
+
   def test
-    if @a + @b <= @c || @a + @c <= @b || @b + @c <= @a
-      @type = "false" ; return @type
-    end
-
-    if @a == @b && @a == @c
-      @type = "equilateral"
-    elsif @a ** 2 + @b ** 2 == @c ** 2
-      @type = "right"
-    end
-
-    if @a == @b || @a == @c || @b == @c
-      @isosceles = true
-    else
-      @scalene = true
-    end
-
-    if @isosceles
-      if @type == "right" then @type += " isosceles"
-      else @type = "isosceles"
-      end
-    elsif @scalene
-      if @type == "right" then @type += " scalene"
-      else @type = "scalene"
-      end
-    end
-
-    return @type
+    if self.not_a_triangle? then return "Not a valid Triangle"
+    elsif self.equilateral? then return "equilateral"
+    elsif self.isosceles? && self.right? then return "right isosceles"
+    elsif self.isosceles? then return "isosceles"
+    elsif self.right? then return "right scalene"
+    else return "scalene" ; end
   end
 end
 
-input = ""
-loop do
-  print "Enter side A: "
-  input = gets.chomp
-  if input != "q" then a = input
-  else break
-  end
-  print "Enter side B: "
-  input = gets.chomp
-  if input != "q" then b = input
-  else break
-  end
-  print "Enter side C: "
-  input = gets.chomp
-  if input != "q" then c = input ; puts
-  else break
+a = 1.0 ; b = 2.0 ; c = 3.0
+3.times do
+  tri = Triangle.new(a,b,c) ; puts "Triangle(#{a},#{b},#{c}) created"
+  if tri.test == "Not a valid Triangle"
+    puts tri.test ; puts ; a += 1 ; b += 1 ; c += 1 ; next
   end
 
-  tri = Triangle.new(a.to_f,b.to_f,c.to_f)
   puts "Triangle Type: #{tri.test}"
-  if tri.test != "false"
-    puts "Perimeter: #{tri.perimeter}"
-    puts "Area: #{tri.area}" ; puts
-  end
+  puts "Perimeter: #{tri.perimeter}"
+  puts "Area: #{tri.area}" ; puts
+  a += 1 ; b += 1 ; c += 1
 end
